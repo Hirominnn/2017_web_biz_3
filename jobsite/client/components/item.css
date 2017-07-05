@@ -1,0 +1,24 @@
+.item {
+	border-top: 2px solid #1e88e5
+}
+
+.item-header {
+	padding: 25px
+}
+
+.item-header-right {
+	padding-left: 40px
+}
+
+.item-header-title {
+	font-size: 25px
+}
+
+.item-header-lower {
+	padding-top: 15px
+}
+
+.item-summary {
+	padding: 20px 15px
+}
+
