@@ -13,7 +13,7 @@ import requests
 import MeCab as mc
 from PIL import Image
 def mecab_analysis(text):
-    t = mc.Tagger('-Ochasen')
+    t = mc.Tagger('-Ochasen -d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/')
     node = t.parseToNode(text)
     output = []
     while(node):
@@ -32,7 +32,10 @@ def create_wordcloud(text):
     #fpath = "/System/Library/Fonts/HelveticaNeue-UltraLight.otf"
     fpath = "/home/kajimura/aozoramincho-readme-ttf/AozoraMincho-bold.ttf"
     # ストップワードの設定
-    stop_words = [ 'てる', 'いる', 'なる']
+    stop_words = [  u'てる', u'いる', u'なる', u'れる', u'する', u'ある', u'こと', u'これ', u'さん', u'して', \
+             u'くれる', u'やる', u'くださる', u'そう', u'せる', u'した',  u'思う',  \
+             u'それ', u'ここ', u'ちゃん', u'くん', u'', u'て',u'に',u'を',u'は',u'の', u'が', u'と', u'た', u'し', u'で', \
+             u'ない', u'も', u'な', u'い', u'か', u'ので', u'よう', u'']
 
     wordcloud = WordCloud(background_color="white", font_path=fpath,width=900, height=500, \
                           stopwords=set(stop_words)).generate(text)
