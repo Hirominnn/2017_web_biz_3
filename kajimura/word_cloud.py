@@ -1,11 +1,17 @@
 # ライブラリのインポート
+#!/bin/env python
+# coding:utf-8
 #%matplotlib inline
+#%matplotlib inline
+import urllib3
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from bs4 import BeautifulSoup
 import requests
 import MeCab as mc
-
+from PIL import Image
 def mecab_analysis(text):
     t = mc.Tagger('-Ochasen')
     node = t.parseToNode(text)
@@ -24,28 +30,26 @@ def create_wordcloud(text):
 
     # 環境に合わせてフォントのパスを指定する。
     #fpath = "/System/Library/Fonts/HelveticaNeue-UltraLight.otf"
-    fpath = "/Library/Fonts/ヒラギノ角ゴ Pro W3.otf"
-
+    fpath = "/home/kajimura/aozoramincho-readme-ttf/AozoraMincho-bold.ttf"
     # ストップワードの設定
-    stop_words = [ u'てる', u'いる', u'なる', u'れる', u'する', u'ある', u'こと', u'これ', u'さん', u'して', \
-             u'くれる', u'やる', u'くださる', u'そう', u'せる', u'した',  u'思う',  \
-             u'それ', u'ここ', u'ちゃん', u'くん', u'', u'て',u'に',u'を',u'は',u'の', u'が', u'と', u'た', u'し', u'で', \
-             u'ない', u'も', u'な', u'い', u'か', u'ので', u'よう', u'']
+    stop_words = [ 'てる', 'いる', 'なる']
 
-    wordcloud = WordCloud(background_color="white",font_path=fpath, width=900, height=500, \
+    wordcloud = WordCloud(background_color="white", font_path=fpath,width=900, height=500, \
                           stopwords=set(stop_words)).generate(text)
-
-    plt.figure(figsize=(15,12))
+    #plt.figure(figsize=(15,12))
     plt.imshow(wordcloud)
     plt.axis("off")
-    plt.show()
+    #plt.show()
+    filename = "output.png"
+    plt.savefig(filename)
 
 def get_wordlist_from_QiitaURL(url):
     res = requests.get(url)
-    soup = BeautifulSoup(res.text)
+    soup = BeautifulSoup(res.text,"html.parser")
     text = soup.body.section.get_text().replace('\n','').replace('\t','')
     return mecab_analysis(text)
 
 url = "http://qiita.com/t_saeko/items/2b475b8657c826abc114"
 wordlist = get_wordlist_from_QiitaURL(url)
 create_wordcloud(" ".join(wordlist))
+#print(wordlist)
