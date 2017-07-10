@@ -40,6 +40,7 @@ class GaishiDriver(object):
         es_list = self.sr_list_page.find_all("a", class_="_panel-content report-list")
         for es in es_list:
             url = es["ng-href"]
+            print(url)
             if str(url).startswith("https://gaishishukatsu.com/selection_reports/"):
                 sr_urls.append(url)
         return sr_urls
@@ -139,3 +140,4 @@ class VorkersDriver(object):
                 review_arr += [review.text.strip("\n").strip() for review in reviews]
         self.dic["reviews"] = review_arr
         return self.dic
+
