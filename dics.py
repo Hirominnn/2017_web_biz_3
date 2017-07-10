@@ -1,4 +1,17 @@
 company_dics = {
+    "ゴールドマン・サックス": {
+        "name": "goldman_sachs",
+        "gaishi": "21",
+        "vorkers": "a0910000000G2fm"
+    },
+    "J.P.モルガン": {
+        "name": "jp_morgan",
+        "gaishi": "26",
+        "vorkers": "a0910000000GWZp"
+    },
+}
+
+all_company_dics = {
     "三菱商事": {
         "name": "mitsubishi_shouji",
         "gaishi": "37",
@@ -34,11 +47,6 @@ company_dics = {
         "gaishi": "329",
         "vorkers": "a0910000000FrRq"
     },
-    "Apple": {
-        "name": "apple",
-        "gaishi": "47",
-        "vorkers": "a0910000000GW8O"
-    },
     "マッキンゼー・アンド・カンパニー": {
         "name": "mckinsey",
         "gaishi": "1",
@@ -49,29 +57,16 @@ company_dics = {
         "gaishi": "76",
         "vorkers": "a0910000000Frqy"
     },
-    "Gunosy": {
-        "name": "gunosy",
-        "gaishi": "3700",
-        "vorkers": "a0C1000000sMLeb"
-    },
     "ワークスアプリケーションズ": {
         "name": "works_applications",
         "gaishi": "267",
         "vorkers": "a0910000000Fr0k"
-    },
-    "エムスリー": {
-        "name": "m3",
-        "gaishi": "403",
-        "vorkers": "a0910000000FqkQ"
     },
     "ボストン コンサルティング グループ": {
         "name": "bcg",
         "gaishi": "3",
         "vorkers": "a0910000000G8f7"
     },
-}
-
-obsoletes = {
     "野村證券": {
         "name": "nomura_shoken",
         "gaishi": "32",
@@ -81,6 +76,35 @@ obsoletes = {
         "name": "bain",
         "gaishi": "2",
         "vorkers": "a0910000000GAHx"
+    },
+    "ゴールドマン・サックス": {
+        "name": "goldman_sachs",
+        "gaishi": "21",
+        "vorkers": "a0910000000G2fm"
+    },
+    "J.P.モルガン": {
+        "name": "jp_morgan",
+        "gaishi": "26",
+        "vorkers": "a0910000000GWZp"
+    },
+}
+
+obsoletes = {
+    # 選考体験記がない
+    "Apple": {
+        "name": "apple",
+        "gaishi": "47",
+        "vorkers": "a0910000000GW8O"
+    },
+    "Gunosy": {
+        "name": "gunosy",
+        "gaishi": "3700",
+        "vorkers": "a0C1000000sMLeb"
+    },
+    "エムスリー": {
+        "name": "m3",
+        "gaishi": "403",
+        "vorkers": "a0910000000FqkQ"
     },
 
 }
