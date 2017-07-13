@@ -4,6 +4,7 @@
 #%matplotlib inline
 #%matplotlib inline
 import urllib3
+import json
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -52,7 +53,15 @@ def get_wordlist_from_QiitaURL(url):
     text = soup.body.section.get_text().replace('\n','').replace('\t','')
     return mecab_analysis(text)
 
-url = "http://qiita.com/t_saeko/items/2b475b8657c826abc114"
-wordlist = get_wordlist_from_QiitaURL(url)
+def get_wordlist(filename):
+    with open(filename, "r") as f:
+        res = json.load(f)["reviews"]
+    res=''.join(res)
+    res = res.replace('\n','').replace('\t','')
+    return mecab_analysis(res)
+
+#print(reviews)
+#url = "http://qiita.com/t_saeko/items/2b475b8657c826abc114"
+wordlist = get_wordlist("mitsubishi_shouji.json")
 create_wordcloud(" ".join(wordlist))
 #print(wordlist)
