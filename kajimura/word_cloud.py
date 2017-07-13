@@ -20,7 +20,7 @@ def mecab_analysis(text):
     while(node):
         if node.surface != "":  # ヘッダとフッタを除外
             word_type = node.feature.split(",")[0]
-            if word_type in ["形容詞", "動詞","名詞", "副詞"]:
+            if word_type in ["名詞"]:
                 output.append(node.surface)
         node = node.next
         if node is None:
@@ -36,7 +36,7 @@ def create_wordcloud(text):
     stop_words = [  u'てる', u'いる', u'なる', u'れる', u'する', u'ある', u'こと', u'これ', u'さん', u'して', \
              u'くれる', u'やる', u'くださる', u'そう', u'せる', u'した',  u'思う',  \
              u'それ', u'ここ', u'ちゃん', u'くん', u'', u'て',u'に',u'を',u'は',u'の', u'が', u'と', u'た', u'し', u'で', \
-             u'ない', u'も', u'な', u'い', u'か', u'ので', u'よう', u'']
+             u'ない', u'も', u'な', u'い', u'か', u'ので', u'よう', u'',u'意味',u'社員',u'入社',u'社内',u'基本的',u'プロジェクト']
 
     wordcloud = WordCloud(background_color="white", font_path=fpath,width=900, height=500, \
                           stopwords=set(stop_words)).generate(text)
@@ -44,7 +44,7 @@ def create_wordcloud(text):
     plt.imshow(wordcloud)
     plt.axis("off")
     #plt.show()
-    filename = "output.png"
+    filename = "mckinsey_wordcloud.png"
     plt.savefig(filename)
 
 def get_wordlist_from_QiitaURL(url):
@@ -57,11 +57,13 @@ def get_wordlist(filename):
     with open(filename, "r") as f:
         res = json.load(f)["reviews"]
     res=''.join(res)
-    res = res.replace('\n','').replace('\t','')
+    res = res.replace('\n','').replace('\t','').replace('非常','').replace('組織','').\
+    replace('体制','').replace('仕事','').replace('なく','').replace('関係','').replace('自分','')\
+    .replace('会社','').replace('ため','').replace('オフィス','').replace('雰囲気','')
     return mecab_analysis(res)
 
 #print(reviews)
 #url = "http://qiita.com/t_saeko/items/2b475b8657c826abc114"
-wordlist = get_wordlist("mitsubishi_shouji.json")
+wordlist = get_wordlist("reviews/mckinsey.json")
 create_wordcloud(" ".join(wordlist))
 #print(wordlist)
