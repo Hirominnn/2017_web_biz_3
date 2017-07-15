@@ -36,7 +36,9 @@ def create_wordcloud(text):
     stop_words = [  u'てる', u'いる', u'なる', u'れる', u'する', u'ある', u'こと', u'これ', u'さん', u'して', \
              u'くれる', u'やる', u'くださる', u'そう', u'せる', u'した',  u'思う',  \
              u'それ', u'ここ', u'ちゃん', u'くん', u'', u'て',u'に',u'を',u'は',u'の', u'が', u'と', u'た', u'し', u'で', \
-             u'ない', u'も', u'な', u'い', u'か', u'ので', u'よう', u'',u'意味',u'社員',u'入社',u'社内',u'基本的',u'プロジェクト']
+             u'ない', u'も', u'な', u'い', u'か', u'ので', u'よう', u'',u'意味',u'社員',u'入社',u'社内',u'基本的',\
+             u'プロジェクト',u'企業',u'環境',u'事業',u'担当',u'部門',u'上の',u'文化',u'方針',u'ごと',u'',u'',u'',u''\
+             ,u'',u'',u'']
 
     wordcloud = WordCloud(background_color="white", font_path=fpath,width=900, height=500, \
                           stopwords=set(stop_words)).generate(text)
@@ -44,7 +46,7 @@ def create_wordcloud(text):
     plt.imshow(wordcloud)
     plt.axis("off")
     #plt.show()
-    filename = "mckinsey_wordcloud.png"
+    filename = "wordcloud_picture/japan_ibm.png"
     plt.savefig(filename)
 
 def get_wordlist_from_QiitaURL(url):
@@ -64,6 +66,6 @@ def get_wordlist(filename):
 
 #print(reviews)
 #url = "http://qiita.com/t_saeko/items/2b475b8657c826abc114"
-wordlist = get_wordlist("reviews/mckinsey.json")
+wordlist = get_wordlist("reviews/japan_ibm.json")
 create_wordcloud(" ".join(wordlist))
-#print(wordlist)
+print(wordlist)
