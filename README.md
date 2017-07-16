@@ -46,3 +46,17 @@
 }
 ```
 
+### Run the Application
+#### clone the repo
+```
+git clone https://github.com/Hirominnn/2017_web_biz_4.git
+```
+#### install meteor (for mac/linux)
+```
+curl https://install.meteor.com/ | sh
+```
+#### run it
+```
+meteor
+```
+
