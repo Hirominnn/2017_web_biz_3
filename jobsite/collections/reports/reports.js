@@ -1,10 +1,10 @@
-// Comment schema definition
+// Report schema definition
 
-class CommentsCollection extends Mongo.Collection {
+class ReportsCollection extends Mongo.Collection {
 	// Overwrite super class to modify our intended behaviours
  	// We will probably modify these functions later
-	insert(comment, callback) {
-    return super.insert(comment, callback);
+	insert(report, callback) {
+    return super.insert(report, callback);
   }
 
   update(selector, modifier, callback) {
@@ -16,9 +16,9 @@ class CommentsCollection extends Mongo.Collection {
   }
 }
 
-Comments = new CommentsCollection('Comments');
+Reports = new ReportsCollection('Reports');
 
-Comments.deny({
+Reports.deny({
   insert: function() {
     return true;
   },
@@ -30,18 +30,24 @@ Comments.deny({
   }
 });
 
-CommentsSchema = new SimpleSchema({
+ReportsSchema = new SimpleSchema({
 	// Table Data
-	name: {
+	companyId: {
 		type: String,
-		label: 'Title'
+		optional: true
 	},
-	content: {
-		type: String,
-	},
-	tags: {
-		type: [String],
+	data: {
+		type: Object,
 		optional: true,
+		blackbox: true
+	},
+	importance: {
+		type: String,
+		optional: true
+	},
+	advice: {
+		type: String,
+		optional: true
 	},
 	
 	// Timestamps
@@ -59,12 +65,12 @@ CommentsSchema = new SimpleSchema({
 	}
 })
 
-Comments.attachSchema( CommentsSchema );
+Reports.attachSchema( ReportsSchema );
 
-Comments.publicFields = {
+Reports.publicFields = {
   removed_at: 0
 };
 
-Comments.helpers({
+Reports.helpers({
 
 });

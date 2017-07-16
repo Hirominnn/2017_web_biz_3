@@ -1,3 +1,16 @@
 <template name='home'>
-	{{>item}}
+	{{#unless companies}}
+		{{> loading}}
+	{{else}}
+		<div class="row">
+			{{#each company in companies}}
+				<div class="col l3 m6 s12">
+			    {{> item company=company index=@index}}
+				</div>
+		  {{/each}}
+		</div>
+		<div class="col s12">
+			{{> loadMore item='company'}}
+		</div>
+	{{/unless}}
 </template>

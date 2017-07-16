@@ -2,52 +2,27 @@
   <div class="card hoverable item">
   	<div class="row">
   		<div class="item-header">
-  			<div class="col s1">
+  			<div class="col s12 center-align">
 	  			<div class='logo'>
-	        	<img src="https://lorempixel.com/100/100/">
+	        	<a href={{pathForCompany}}><img src="{{company.logo}}" class="responsive-img"></a>
 	        </div>
 	  		</div>
-	  		<div class="col s11">
-	  			<div class="item-header-right">	
-	  				<div class='item-header-title'>グーグル株式会社</div>
-	    			<div class="row item-header-lower">
-	      			<div class="col s4">
-	      				{{> starsRating rating=4.5 class='item-star' size=20}}
-	      			</div>
-	    				<div class="col s3">
-	    					理念
-	    				</div>
-	    				<div class="col s3">
-	    					年収
-	    				</div>
-	    				<div class="col s2">
-	    					創業年数
-	    				</div>
-	    			</div>
-	  			</div>	
+	  		<div class="col s12">
+    			<div class="item-header-lower item-stars">
+    				<div class="left">
+      				{{> starsRating rating=company.rating class='item-star' size=20}}
+    				</div>
+      			<div class="left">
+              <div class="item-score-label">
+	      			  {{company.rating}}
+              </div>
+    				</div>
+    			</div>
 	  		</div>
-  		</div>
-  	</div>
-		<div class="divider"></div>
-  	<div class="row">
-  		<div class="item-body">
-  			<div class="col s3 offset-s1">
-	  			{{> radar }}
-	  		</div>
-	  		<div class="col s7">
-	  			<div class="row">
-	  				<div class="col s6">
-	  					{{> progress id='one' name='残業時間（月間）' value='24' unit='h'}}
-	  				</div>
-	  				<div class="col s6">
-	  					{{> progress id='two' name='有給休暇消化率 ' value='76' unit='%'}}
-	  				</div>
-	  			</div>
-	  			<div class="item-summary">
-            <h5>要約</h5>
-            <p>若くして責任のあるポジションを任せてもらえ、その分成長が見込める。また、コンプライアンスについても、基本的には遵守する姿勢となっている。ただ、慢性的に人材不足に悩まさせていて、会社を変えようとポジティブな意見が上がってきても、なかなか実現に至らないという現状がある。いまだに、コネクションにより人の上に立っている社員も存在し、そういったケースの場合、組織として機能していなくなっている状態も見受けられる</p>
-	  			</div>
-	  		</div>
+        <div class="col s12 center-align">
+          <p>社員口コミ：{{reviewCount}}</p>
+          <p>社員体験：{{reportCount}}</p>
+        </div>
   		</div>
   	</div>
   </div>

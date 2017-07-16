@@ -34,15 +34,40 @@ CompaniesSchema = new SimpleSchema({
 	// Table Data
 	name: {
 		type: String,
-		label: 'Title'
+		optional: true
 	},
-	content: {
+	symbol: {
 		type: String,
+		optional: true
 	},
-	tags: {
-		type: [String],
+	paidVacation: {
+		type: Number,
+		optional: true,
+		decimal: true
+	},
+	overTime: {
+		type: Number,
+		optional: true,
+		decimal: true
+	},
+	rating: {
+		type: Number,
+		optional: true,
+		decimal: true
+	},
+	radar: {
+		type: Object,
+		optional: true,
+		blackbox: true
+	},
+	lexRanks: {
+		type: Array,
 		optional: true,
 	},
+	'lexRanks.$': {
+    type: String,
+    blackbox: true
+  },
 	
 	// Timestamps
 	created_at: {
@@ -66,5 +91,10 @@ Companies.publicFields = {
 };
 
 Companies.helpers({
-
+	wordcloud() {
+		return '/wordcloud_picture/' + this.symbol + '.png'
+	},
+	logo() {
+		return '/logo/' + this.symbol + '.png'
+	},
 });

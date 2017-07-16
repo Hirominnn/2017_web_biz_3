@@ -1,4 +1,23 @@
 <template name='company'>
-	{{> profile}}
-	{{> comment}}
+	{{#unless company}}
+		{{> loading}}
+	{{else}}
+		{{#if searching}}
+			{{> profile company=company index='1'}}
+		{{/if }}
+		<h4>選考文</h4>
+	  {{#each report in reports}}
+	    {{> selectionReports report=report index=@index}}
+	  {{/each}}
+	  <div class="col s12">
+			{{> loadMore item='report'}}
+		</div>
+		<h4>口コミ</h4>
+		{{#each review in reviews}}
+	    {{> reviewView review=review index=@index}}
+	  {{/each}}
+	  <div class="col s12">
+			{{> loadMore item='review'}}
+		</div>
+	{{/unless}}
 </template>
