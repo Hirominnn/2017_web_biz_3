@@ -54,10 +54,14 @@ def crawl_vorkers(company_dics, done):
         time.sleep(1)
 
 if __name__ == "__main__":
-    done = ["三菱商事", "ボストン コンサルティング グループ", "サイバーエージェント", "エムスリー", "DeNA",
+    done = []
+    """
+    vorkers_done = ["三菱商事", "ボストン コンサルティング グループ", "サイバーエージェント", "エムスリー", "DeNA",
             "ベイン・アンド・カンパニー", "三井不動産", "電通", "マッキンゼー・アンド・カンパニー", "Gunosy",
-            "日本IBM", "キーエンス", "Apple", "Google"] 
-    #done = ["三菱商事", ]
-    #crawl_gaishi(company_dic)
+            "日本IBM", "キーエンス", "Apple", "Google", "ワークスアプリケーションズ"] 
+    """
     crawl_vorkers(company_dics, done)
+  
+    #done = ["三菱商事", ]
+    crawl_gaishi(company_dics, done)
 
