@@ -9,13 +9,15 @@ Template.company.helpers({
   },
 	reviews() {
     const companyId = FlowRouter.getParam("id")
-    const reviewFilters = Session.get('reviewFilters') ? Session.get('reviewFilters') : {companyId}
+    const reviewFilters = Session.get('reviewFilters') ? Session.get('reviewFilters') : {}
+    reviewFilters.companyId = companyId
     const reviewLimit = Session.get('reviewLimit') ? Session.get('reviewLimit') : {limit: 4}
   	return Reviews.find(reviewFilters, reviewLimit).fetch()
   },
   reports() {
     const companyId = FlowRouter.getParam("id")
-    const reportFilters = Session.get('reportFilters') ? Session.get('reportFilters') : {companyId}
+    const reportFilters = Session.get('reportFilters') ? Session.get('reportFilters') : {}
+    reportFilters.companyId = companyId
     const reportLimit = Session.get('reportLimit') ? Session.get('reportLimit') : {limit: 4}
   	return Reports.find(reportFilters, reportLimit).fetch()
   },
